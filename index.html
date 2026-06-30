@@ -61,11 +61,25 @@
     width:30px;height:30px;border-radius:50%;
     background:conic-gradient(from 200deg, var(--turf), var(--gold), var(--scarlet), var(--turf));
     display:flex;align-items:center;justify-content:center;
-    font-family:var(--font-display);font-size:13px;color:var(--night);
+    font-family:var(--font-display);font-size:10px;color:var(--night);
   }
   nav{display:flex;gap:26px;font-family:var(--font-sub);font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:var(--bone-dim);}
   nav a:hover{color:var(--gold-bright);}
   .nav-toggle{display:none;}
+
+  /* ---------- back to top ---------- */
+  .back-top{
+    position:fixed;bottom:32px;right:28px;z-index:90;
+    width:44px;height:44px;border-radius:50%;
+    background:var(--turf);border:1px solid var(--turf-light);
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;opacity:0;transform:translateY(12px);
+    transition:opacity .3s, transform .3s, background .2s;
+  }
+  .back-top.show{opacity:1;transform:translateY(0);}
+  .back-top:hover{background:var(--gold);border-color:var(--gold);color:var(--night);}
+  .back-top svg{width:18px;height:18px;stroke:var(--bone);stroke-width:2.5;fill:none;transition:stroke .2s;}
+  .back-top:hover svg{stroke:var(--night);}
 
   /* ---------- hero ---------- */
   .hero{
@@ -628,6 +642,7 @@
     .odds-center{ flex-direction:row;flex-wrap:wrap;justify-content:center; }
     .odds-bet-types{width:100%;}
     .odds-card{padding:16px 18px;}
+    .back-top{bottom:20px;right:16px;width:40px;height:40px;}
   }
 
   /* focus visibility */
@@ -644,7 +659,7 @@
 
 <header>
   <div class="brand">
-    <div class="mark">26</div>
+    <div class="mark">2026</div>
     FIFA WORLD CUP 2026
   </div>
   <nav>
@@ -663,7 +678,7 @@
 <section class="hero">
   <div class="pitch-line"></div>
   <div class="hero-eyebrow"><span class="live-dot"></span> 第23届世界杯 · 美国 · 加拿大 · 墨西哥 联合主办 · 小组赛收官 · 淘汰赛进行中</div>
-  <h1>美<span class="accent">加</span>墨<br>世界杯 26</h1>
+  <h1>美<span class="accent">加</span>墨<br>世界杯 2026</h1>
   <p class="hero-sub">史上首届 <b>48支球队</b> 参赛的世界杯，<b>32强淘汰赛</b> 全面开战。<br>2026年6月11日至7月19日，三国16城见证冠军之路。</p>
 
   <div class="host-strip">
@@ -810,7 +825,7 @@
 
 <footer>
   <div>
-    <div class="footer-brand">WORLD CUP 26</div>
+    <div class="footer-brand">WORLD CUP 2026</div>
     <p class="footer-note">本页面为非官方粉丝向赛事资讯展示页，比赛数据与赛程信息基于FIFA官方与央视公开报道整理，仅供参考，具体请以国际足联（FIFA）官方发布为准。数据截至2026年6月30日。</p>
   </div>
   <div class="footer-links">
@@ -826,7 +841,19 @@
   </div>
 </footer>
 
+<!-- 返回顶部 -->
+<button class="back-top" id="backTop" aria-label="返回顶部" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24"><polyline points="6 15 12 9 18 15"/></svg>
+</button>
+
 <script>
+/* ---------- back to top ---------- */
+window.addEventListener('scroll',()=>{
+  const btn=document.getElementById('backTop');
+  if(window.scrollY>400) btn.classList.add('show');
+  else btn.classList.remove('show');
+});
+
 /* ================= DATA ================= */
 const FLAGS = {
   "墨西哥":"🇲🇽","南非":"🇿🇦","韩国":"🇰🇷","捷克":"🇨🇿",
