@@ -174,6 +174,49 @@
   .host-chip .flag{font-size:16px;}
   .host-chip b{color:var(--bone);font-family:var(--font-sub);font-weight:600;}
 
+  /* ---------- pixel clock ---------- */
+  .hero-clock{
+    margin-top:20px;z-index:2;
+    transform:scale(1.6);transform-origin:left top;
+  }
+  #pixel-clock .digit-container{
+    display:grid;
+    grid-template-columns:repeat(4, 0.2rem);
+    grid-template-rows:repeat(7, 0.2rem);
+    gap:0.05rem;
+  }
+  #pixel-clock .pixel{
+    background-color:rgba(201,162,75,0.15);
+    border-radius:0.5px;
+  }
+  #pixel-clock .pixel.active{
+    background-color:#c9a24b;
+    box-shadow:0 0 4px rgba(201,162,75,0.5);
+  }
+  #pixel-clock .colon{
+    display:flex;flex-direction:column;justify-content:center;gap:0.25rem;margin:0 0.1rem;
+  }
+  #pixel-clock .colon-dot{
+    width:0.15rem;height:0.15rem;
+    background-color:#c9a24b;border-radius:50%;
+    box-shadow:0 0 4px rgba(201,162,75,0.5);
+  }
+  #pixel-clock .date-digit{
+    grid-template-columns:repeat(4, 0.14rem);
+    grid-template-rows:repeat(7, 0.14rem);
+    gap:0.03rem;
+  }
+  #pixel-clock .date-sep{
+    width:0.14rem;height:0.14rem;
+    background-color:#c9a24b;border-radius:1px;align-self:center;margin:0 1px;
+  }
+  #date-row{display:flex;align-items:center;justify-content:center;gap:1px;margin-bottom:4px;}
+  #time-row{display:flex;align-items:center;gap:2px;}
+  @media(max-width:680px){
+    .hero-clock{transform:scale(1.2);transform-origin:left top;margin-top:12px;}
+    #seconds-tens,#seconds-ones,#colon-ms{display:none;}
+  }
+
   .hero-stats{
     position:absolute;right:6vw;bottom:60px;display:flex;gap:40px;z-index:2;
   }
@@ -694,7 +737,7 @@
     <a href="#scorers">射手榜</a>
     <a href="#teams">球队</a>
     <a href="#stats">数据战报</a>
-    <a href="#odds">博彩</a>
+    <a href="#odds">博彩赔率</a>
     <a href="#venues">主办城市</a>
   </nav>
   <button class="nav-toggle" id="navToggle" onclick="toggleDrawer()">
@@ -710,7 +753,7 @@
   <a href="#scorers" onclick="toggleDrawer()">射手榜</a>
   <a href="#teams" onclick="toggleDrawer()">球队</a>
   <a href="#stats" onclick="toggleDrawer()">数据战报</a>
-  <a href="#odds" onclick="toggleDrawer()">博彩</a>
+  <a href="#odds" onclick="toggleDrawer()">博彩赔率</a>
   <a href="#venues" onclick="toggleDrawer()">主办城市</a>
 </div>
 
@@ -719,6 +762,36 @@
   <div class="pitch-line"></div>
   <div class="hero-eyebrow"><span class="live-dot"></span> 第23届世界杯 · 美国 · 加拿大 · 墨西哥 联合主办 · 小组赛收官 · 淘汰赛进行中</div>
   <h1>美<span class="accent">加</span>墨<br>世界杯 2026</h1>
+  <div id="pixel-clock" class="hero-clock">
+    <div id="date-row">
+      <div class="digit-container date-digit" id="year-thousands"></div>
+      <div class="digit-container date-digit" id="year-hundreds"></div>
+      <div class="digit-container date-digit" id="year-tens"></div>
+      <div class="digit-container date-digit" id="year-ones"></div>
+      <div class="date-sep"></div>
+      <div class="digit-container date-digit" id="month-tens"></div>
+      <div class="digit-container date-digit" id="month-ones"></div>
+      <div class="date-sep"></div>
+      <div class="digit-container date-digit" id="day-tens"></div>
+      <div class="digit-container date-digit" id="day-ones"></div>
+    </div>
+    <div id="time-row">
+      <div class="digit-container" id="hours-tens"></div>
+      <div class="digit-container" id="hours-ones"></div>
+      <div class="colon" id="colon-hm">
+        <div class="colon-dot"></div>
+        <div class="colon-dot"></div>
+      </div>
+      <div class="digit-container" id="minutes-tens"></div>
+      <div class="digit-container" id="minutes-ones"></div>
+      <div class="colon" id="colon-ms">
+        <div class="colon-dot"></div>
+        <div class="colon-dot"></div>
+      </div>
+      <div class="digit-container" id="seconds-tens"></div>
+      <div class="digit-container" id="seconds-ones"></div>
+    </div>
+  </div>
   <p class="hero-sub">史上首届 <b>48支球队</b> 参赛的世界杯，<b>32强淘汰赛</b> 全面开战。<br>2026年6月11日至7月19日，三国16城见证冠军之路。</p>
 
   <div class="host-strip">
@@ -806,7 +879,7 @@
 <!-- ============ VENUES ============ -->
 <section id="odds">
   <div class="section-head">
-    <div class="eyebrow">博彩数据</div>
+    <div class="eyebrow">博彩赔率</div>
     <h2>国际博彩赔率</h2>
     <p class="section-desc">整理自Bwin、365bet、必发等主流国际博彩机构盘口数据，包含让球盘、大小球与标准赔率。仅供参考，请理性欣赏比赛。</p>
   </div>
@@ -874,6 +947,68 @@
 </button>
 
 <script>
+/* ---------- pixel clock ---------- */
+const digitPatterns={
+  0:[[1,1,1,1],[1,0,0,1],[1,0,0,1],[1,0,0,1],[1,0,0,1],[1,0,0,1],[1,1,1,1]],
+  1:[[0,0,1,0],[0,1,1,0],[0,0,1,0],[0,0,1,0],[0,0,1,0],[0,0,1,0],[0,1,1,1]],
+  2:[[1,1,1,1],[0,0,0,1],[0,0,0,1],[1,1,1,1],[1,0,0,0],[1,0,0,0],[1,1,1,1]],
+  3:[[1,1,1,1],[0,0,0,1],[0,0,0,1],[1,1,1,1],[0,0,0,1],[0,0,0,1],[1,1,1,1]],
+  4:[[1,0,0,1],[1,0,0,1],[1,0,0,1],[1,1,1,1],[0,0,0,1],[0,0,0,1],[0,0,0,1]],
+  5:[[1,1,1,1],[1,0,0,0],[1,0,0,0],[1,1,1,1],[0,0,0,1],[0,0,0,1],[1,1,1,1]],
+  6:[[1,1,1,1],[1,0,0,0],[1,0,0,0],[1,1,1,1],[1,0,0,1],[1,0,0,1],[1,1,1,1]],
+  7:[[1,1,1,1],[0,0,0,1],[0,0,0,1],[0,0,0,1],[0,0,0,1],[0,0,0,1],[0,0,0,1]],
+  8:[[1,1,1,1],[1,0,0,1],[1,0,0,1],[1,1,1,1],[1,0,0,1],[1,0,0,1],[1,1,1,1]],
+  9:[[1,1,1,1],[1,0,0,1],[1,0,0,1],[1,1,1,1],[0,0,0,1],[0,0,0,1],[1,1,1,1]]
+};
+function initDigitContainers(){
+  ['year-thousands','year-hundreds','year-tens','year-ones',
+   'month-tens','month-ones','day-tens','day-ones',
+   'hours-tens','hours-ones','minutes-tens','minutes-ones',
+   'seconds-tens','seconds-ones'].forEach(id=>{
+    const c=document.getElementById(id);
+    if(!c)return;
+    for(let r=0;r<7;r++)for(let col=0;col<4;col++){
+      const p=document.createElement('div');p.className='pixel';c.appendChild(p);
+    }
+  });
+  updateClock();
+}
+function updateDigit(containerId,digit){
+  const c=document.getElementById(containerId);if(!c)return;
+  const pattern=digitPatterns[digit];const px=c.children;let idx=0;
+  for(let r=0;r<7;r++)for(let col=0;col<4;col++){
+    if(px[idx])px[idx].classList.toggle('active',pattern[r][col]===1);idx++;
+  }
+}
+function updateClock(){
+  const now=new Date();
+  const dateStr=now.toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'});
+  const dMatch=dateStr.match(/(\d{4})[^\d](\d{2})[^\d](\d{2})/);
+  if(dMatch){
+    updateDigit('year-thousands',parseInt(dMatch[1][0]));
+    updateDigit('year-hundreds',parseInt(dMatch[1][1]));
+    updateDigit('year-tens',parseInt(dMatch[1][2]));
+    updateDigit('year-ones',parseInt(dMatch[1][3]));
+    updateDigit('month-tens',parseInt(dMatch[2][0]));
+    updateDigit('month-ones',parseInt(dMatch[2][1]));
+    updateDigit('day-tens',parseInt(dMatch[3][0]));
+    updateDigit('day-ones',parseInt(dMatch[3][1]));
+  }
+  const timeStr=now.toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',hour12:false,hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  const tMatch=timeStr.match(/(\d{1,2}):(\d{2}):(\d{2})/);
+  if(tMatch){
+    const h=tMatch[1].padStart(2,'0');
+    updateDigit('hours-tens',parseInt(h[0]));
+    updateDigit('hours-ones',parseInt(h[1]));
+    updateDigit('minutes-tens',parseInt(tMatch[2][0]));
+    updateDigit('minutes-ones',parseInt(tMatch[2][1]));
+    updateDigit('seconds-tens',parseInt(tMatch[3][0]));
+    updateDigit('seconds-ones',parseInt(tMatch[3][1]));
+  }
+}
+initDigitContainers();
+setInterval(updateClock,1000);
+
 /* ---------- back to top ---------- */
 window.addEventListener('scroll',()=>{
   const btn=document.getElementById('backTop');
