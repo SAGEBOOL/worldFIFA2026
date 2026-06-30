@@ -175,9 +175,11 @@
   .host-chip b{color:var(--bone);font-family:var(--font-sub);font-weight:600;}
 
   /* ---------- pixel clock ---------- */
+  .hero-h1-clock{display:flex;flex-wrap:wrap;align-items:baseline;}
   .hero-clock{
-    margin-top:20px;z-index:2;
-    transform:scale(1.6);transform-origin:left top;
+    display:inline-flex;flex-direction:column;align-items:center;
+    margin-left:0.15em;vertical-align:middle;
+    transform:scale(0.45);transform-origin:left center;
   }
   #pixel-clock .digit-container{
     display:grid;
@@ -186,20 +188,20 @@
     gap:0.05rem;
   }
   #pixel-clock .pixel{
-    background-color:rgba(201,162,75,0.15);
+    background-color:rgba(100,255,218,0.15);
     border-radius:0.5px;
   }
   #pixel-clock .pixel.active{
-    background-color:#c9a24b;
-    box-shadow:0 0 4px rgba(201,162,75,0.5);
+    background-color:#64ffda;
+    box-shadow:0 0 4px rgba(100,255,218,0.5);
   }
   #pixel-clock .colon{
     display:flex;flex-direction:column;justify-content:center;gap:0.25rem;margin:0 0.1rem;
   }
   #pixel-clock .colon-dot{
     width:0.15rem;height:0.15rem;
-    background-color:#c9a24b;border-radius:50%;
-    box-shadow:0 0 4px rgba(201,162,75,0.5);
+    background-color:#64ffda;border-radius:50%;
+    box-shadow:0 0 4px rgba(100,255,218,0.5);
   }
   #pixel-clock .date-digit{
     grid-template-columns:repeat(4, 0.14rem);
@@ -208,12 +210,12 @@
   }
   #pixel-clock .date-sep{
     width:0.14rem;height:0.14rem;
-    background-color:#c9a24b;border-radius:1px;align-self:center;margin:0 1px;
+    background-color:#64ffda;border-radius:1px;align-self:center;margin:0 1px;
   }
   #date-row{display:flex;align-items:center;justify-content:center;gap:1px;margin-bottom:4px;}
   #time-row{display:flex;align-items:center;gap:2px;}
   @media(max-width:680px){
-    .hero-clock{transform:scale(1.2);transform-origin:left top;margin-top:12px;}
+    .hero-clock{transform:scale(0.35);transform-origin:left center;margin-left:0.08em;}
     #seconds-tens,#seconds-ones,#colon-ms{display:none;}
   }
 
@@ -761,37 +763,7 @@
 <section class="hero">
   <div class="pitch-line"></div>
   <div class="hero-eyebrow"><span class="live-dot"></span> 第23届世界杯 · 美国 · 加拿大 · 墨西哥 联合主办 · 小组赛收官 · 淘汰赛进行中</div>
-  <h1>美<span class="accent">加</span>墨<br>世界杯 2026</h1>
-  <div id="pixel-clock" class="hero-clock">
-    <div id="date-row">
-      <div class="digit-container date-digit" id="year-thousands"></div>
-      <div class="digit-container date-digit" id="year-hundreds"></div>
-      <div class="digit-container date-digit" id="year-tens"></div>
-      <div class="digit-container date-digit" id="year-ones"></div>
-      <div class="date-sep"></div>
-      <div class="digit-container date-digit" id="month-tens"></div>
-      <div class="digit-container date-digit" id="month-ones"></div>
-      <div class="date-sep"></div>
-      <div class="digit-container date-digit" id="day-tens"></div>
-      <div class="digit-container date-digit" id="day-ones"></div>
-    </div>
-    <div id="time-row">
-      <div class="digit-container" id="hours-tens"></div>
-      <div class="digit-container" id="hours-ones"></div>
-      <div class="colon" id="colon-hm">
-        <div class="colon-dot"></div>
-        <div class="colon-dot"></div>
-      </div>
-      <div class="digit-container" id="minutes-tens"></div>
-      <div class="digit-container" id="minutes-ones"></div>
-      <div class="colon" id="colon-ms">
-        <div class="colon-dot"></div>
-        <div class="colon-dot"></div>
-      </div>
-      <div class="digit-container" id="seconds-tens"></div>
-      <div class="digit-container" id="seconds-ones"></div>
-    </div>
-  </div>
+  <h1 class="hero-h1-clock">美<span class="accent">加</span>墨<br>世界杯 2026<span id="pixel-clock" class="hero-clock"></span></h1>
   <p class="hero-sub">史上首届 <b>48支球队</b> 参赛的世界杯，<b>32强淘汰赛</b> 全面开战。<br>2026年6月11日至7月19日，三国16城见证冠军之路。</p>
 
   <div class="host-strip">
@@ -960,17 +932,34 @@ const digitPatterns={
   8:[[1,1,1,1],[1,0,0,1],[1,0,0,1],[1,1,1,1],[1,0,0,1],[1,0,0,1],[1,1,1,1]],
   9:[[1,1,1,1],[1,0,0,1],[1,0,0,1],[1,1,1,1],[0,0,0,1],[0,0,0,1],[1,1,1,1]]
 };
-function initDigitContainers(){
-  ['year-thousands','year-hundreds','year-tens','year-ones',
-   'month-tens','month-ones','day-tens','day-ones',
-   'hours-tens','hours-ones','minutes-tens','minutes-ones',
-   'seconds-tens','seconds-ones'].forEach(id=>{
-    const c=document.getElementById(id);
-    if(!c)return;
-    for(let r=0;r<7;r++)for(let col=0;col<4;col++){
-      const p=document.createElement('div');p.className='pixel';c.appendChild(p);
+function initPixelClock(){
+  const clock=document.getElementById('pixel-clock');if(!clock)return;
+  const ids=[
+    ['year-thousands','year-hundreds','year-tens','year-ones','date-sep','month-tens','month-ones','date-sep','day-tens','day-ones'],
+    ['hours-tens','hours-ones','colon-hm','minutes-tens','minutes-ones','colon-ms','seconds-tens','seconds-ones']
+  ];
+  const dateRow=document.createElement('div');dateRow.id='date-row';
+  ids[0].forEach(id=>{
+    if(id==='date-sep'){const s=document.createElement('div');s.className='date-sep';dateRow.appendChild(s);}
+    else{const d=document.createElement('div');d.className='digit-container date-digit';d.id=id;
+      for(let r=0;r<7;r++)for(let c=0;c<4;c++){const p=document.createElement('div');p.className='pixel';d.appendChild(p);}
+      dateRow.appendChild(d);}
+  });
+  clock.appendChild(dateRow);
+  const timeRow=document.createElement('div');timeRow.id='time-row';
+  ids[1].forEach(id=>{
+    if(id.startsWith('colon')){
+      const col=document.createElement('div');col.className='colon';col.id=id;
+      col.appendChild(document.createElement('div'));col.appendChild(document.createElement('div'));
+      col.querySelectorAll('.colon-dot, div').forEach(d=>d.className='colon-dot');
+      timeRow.appendChild(col);
+    }else{
+      const d=document.createElement('div');d.className='digit-container';d.id=id;
+      for(let r=0;r<7;r++)for(let c=0;c<4;c++){const p=document.createElement('div');p.className='pixel';d.appendChild(p);}
+      timeRow.appendChild(d);
     }
   });
+  clock.appendChild(timeRow);
   updateClock();
 }
 function updateDigit(containerId,digit){
@@ -1006,7 +995,7 @@ function updateClock(){
     updateDigit('seconds-ones',parseInt(tMatch[3][1]));
   }
 }
-initDigitContainers();
+initPixelClock();
 setInterval(updateClock,1000);
 
 /* ---------- back to top ---------- */
