@@ -689,13 +689,13 @@
     FIFA WORLD CUP 2026
   </div>
   <nav>
+    <button class="wiki-btn-nav" onclick="document.getElementById('wikiModal').classList.add('open')">📚 小百科</button>
     <a href="#today">赛程战报</a>
     <a href="#scorers">射手榜</a>
     <a href="#teams">球队</a>
     <a href="#stats">数据战报</a>
     <a href="#odds">博彩</a>
     <a href="#venues">主办城市</a>
-    <button class="wiki-btn-nav" onclick="document.getElementById('wikiModal').classList.add('open')">📚 小百科</button>
   </nav>
   <button class="nav-toggle" id="navToggle" onclick="toggleDrawer()">
     <span></span><span></span><span></span>
@@ -705,13 +705,13 @@
 <!-- mobile nav drawer -->
 <div class="nav-drawer-overlay" id="drawerOverlay" onclick="toggleDrawer()"></div>
 <div class="nav-drawer" id="navDrawer">
+  <button class="wiki-btn-nav" onclick="toggleDrawer();document.getElementById('wikiModal').classList.add('open')">📚 小百科</button>
   <a href="#today" onclick="toggleDrawer()">赛程战报</a>
   <a href="#scorers" onclick="toggleDrawer()">射手榜</a>
   <a href="#teams" onclick="toggleDrawer()">球队</a>
   <a href="#stats" onclick="toggleDrawer()">数据战报</a>
   <a href="#odds" onclick="toggleDrawer()">博彩</a>
   <a href="#venues" onclick="toggleDrawer()">主办城市</a>
-  <button class="wiki-btn-nav" onclick="toggleDrawer();document.getElementById('wikiModal').classList.add('open')">📚 小百科</button>
 </div>
 
 <!-- ============ HERO ============ -->
