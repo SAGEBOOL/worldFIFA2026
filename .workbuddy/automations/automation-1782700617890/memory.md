@@ -12,3 +12,9 @@
   - 倒计时: 正常
   - 今日 3 场比赛均未开始
   - 射手榜第一: Lionel Messi (6 球)
+
+## 2026-06-30 GitHub Pages 部署
+- **状态**: 已启用
+- **公网地址**: https://sagebool.github.io/worldFIFA2026/
+- **来源**: main 分支 / 根目录，HTTPS 强制启用，构建类型: workflow
+- **更新文件**: index.html（点球小游戏版）、test-report-2026-06-30.md
