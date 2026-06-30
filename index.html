@@ -608,10 +608,12 @@
     .leaders-grid{grid-template-columns:1fr;gap:0;}
   }
   @media (max-width:680px){
-    header{padding:16px 20px;}
-    nav{display:none;}
+    header{padding:16px 20px;flex-direction:column;align-items:flex-start;gap:14px;background:rgba(10,18,13,0.95);}
+    nav{display:flex;flex-direction:column;gap:10px;width:100%;font-size:12px;}
+    nav a,.wiki-btn-nav{padding:8px 0;width:100%;text-align:center;border-radius:6px;}
+    .wiki-btn-nav{justify-content:center;}
     section{padding:80px 5vw;}
-    .hero{padding:120px 5vw 60px;}
+    .hero{padding:160px 5vw 60px;}
     .team-spotlight-grid{grid-template-columns:1fr;}
     .score{min-width:60px;font-size:24px;}
     .team-name{font-size:13.5px;}
