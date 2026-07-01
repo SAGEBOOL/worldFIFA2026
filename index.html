@@ -1195,70 +1195,213 @@ const GROUPS = {
 };
 
 /* 8个成绩最佳的小组第三 */
-const ADVANCED_THIRD = ["瑞典","苏格兰","克罗地亚","阿尔及利亚","巴拉圭","佛得角","比利时","刚果民主共和国"];
+const ADVANCED_THIRD = ["刚果民主共和国","加拿大","加纳","厄瓜多尔","奥地利","澳大利亚","瑞典","苏格兰"];
 
 /* 比赛日程：突出关键节点 */
 const DAYS = [
   {label:"6月11日 · 揭幕", matches:[
-    {group:"A",home:"墨西哥",away:"南非",hs:2,as:0,status:"played",venue:"墨西哥城 · 阿兹特克球场",note:"开幕战"}
-  ]},
+    {group:"A",home:"墨西哥",away:"南非",hs:2,as:0,status:"played"}
+    {group:"A",home:"韩国",away:"捷克",hs:2,as:1,status:"played"}
+  ]}
+  ],
+  {label:"6月12日", matches:[
+    {group:"B",home:"加拿大",away:"波黑",hs:1,as:1,status:"played"}
+    {group:"D",home:"美国",away:"巴拉圭",hs:4,as:1,status:"played"}
+  ]}
+  ],
+  {label:"6月13日", matches:[
+    {group:"B",home:"卡塔尔",away:"瑞士",hs:1,as:1,status:"played"}
+    {group:"C",home:"巴西",away:"摩洛哥",hs:1,as:1,status:"played"}
+    {group:"D",home:"澳大利亚",away:"土耳其",hs:2,as:0,status:"played"}
+    {group:"C",home:"海地",away:"苏格兰",hs:0,as:1,status:"played"}
+  ]}
+  ],
+  {label:"6月14日", matches:[
+    {group:"E",home:"德国",away:"库拉索",hs:7,as:1,status:"played"}
+    {group:"F",home:"荷兰",away:"日本",hs:2,as:2,status:"played"}
+    {group:"E",home:"科特迪瓦",away:"厄瓜多尔",hs:1,as:0,status:"played"}
+    {group:"F",home:"瑞典",away:"突尼斯",hs:5,as:1,status:"played"}
+  ]}
+  ],
   {label:"6月15日", matches:[
-    {group:"F",home:"荷兰",away:"日本",hs:2,as:2,status:"played",venue:"阿灵顿 · AT&T球场"},
-    {group:"F",home:"瑞典",away:"突尼斯",hs:5,as:1,status:"played",venue:"东拉瑟福德 · 大都会球场"},
-    {group:"G",home:"比利时",away:"新西兰",hs:2,as:0,status:"played",venue:"福克斯堡 · 吉列球场"},
-    {group:"G",home:"埃及",away:"伊朗",hs:1,as:1,status:"played",venue:"圣克拉拉 · 利维球场"}
-  ]},
+    {group:"H",home:"西班牙",away:"佛得角",hs:0,as:0,status:"played"}
+    {group:"G",home:"比利时",away:"埃及",hs:1,as:1,status:"played"}
+    {group:"H",home:"沙特阿拉伯",away:"乌拉圭",hs:1,as:1,status:"played"}
+    {group:"G",home:"伊朗",away:"新西兰",hs:2,as:2,status:"played"}
+  ]}
+  ],
   {label:"6月16日", matches:[
-    {group:"H",home:"西班牙",away:"沙特阿拉伯",hs:1,as:0,status:"played",venue:"西雅图 · 流明球场"},
-    {group:"J",home:"阿根廷",away:"阿尔及利亚",hs:3,as:0,status:"played",venue:"堪萨斯城 · 箭头球场",note:"梅西帽子戏法"},
-    {group:"I",home:"法国",away:"塞内加尔",hs:3,as:1,status:"played",venue:"东拉瑟福德 · 大都会球场",note:"姆巴佩梅开二度"},
-    {group:"I",home:"挪威",away:"伊拉克",hs:4,as:1,status:"played",venue:"费城 · 林肯金融球场",note:"哈兰德梅开二度"}
-  ]},
+    {group:"I",home:"法国",away:"塞内加尔",hs:3,as:1,status:"played"}
+    {group:"I",home:"伊拉克",away:"挪威",hs:1,as:4,status:"played"}
+    {group:"J",home:"阿根廷",away:"阿尔及利亚",hs:3,as:0,status:"played"}
+    {group:"J",home:"奥地利",away:"约旦",hs:3,as:1,status:"played"}
+  ]}
+  ],
   {label:"6月17日", matches:[
-    {group:"L",home:"英格兰",away:"克罗地亚",hs:4,as:2,status:"played",venue:"阿灵顿 · AT&T球场",note:"凯恩梅开二度"},
-    {group:"K",home:"葡萄牙",away:"刚果民主共和国",hs:1,as:1,status:"played",venue:"休斯顿 · NRG球场"},
-    {group:"L",home:"加纳",away:"巴拿马",hs:1,as:0,status:"played",venue:"多伦多 · BMO球场"}
-  ]},
+    {group:"K",home:"葡萄牙",away:"刚果民主共和国",hs:1,as:1,status:"played"}
+    {group:"L",home:"England",away:"克罗地亚",hs:4,as:2,status:"played"}
+    {group:"L",home:"加纳",away:"巴拿马",hs:1,as:0,status:"played"}
+    {group:"K",home:"乌兹别克斯坦",away:"哥伦比亚",hs:1,as:3,status:"played"}
+  ]}
+  ],
+  {label:"6月18日", matches:[
+    {group:"B",home:"瑞士",away:"波黑",hs:4,as:1,status:"played"}
+    {group:"A",home:"捷克",away:"南非",hs:1,as:1,status:"played"}
+    {group:"B",home:"加拿大",away:"卡塔尔",hs:6,as:0,status:"played"}
+    {group:"A",home:"墨西哥",away:"韩国",hs:1,as:0,status:"played"}
+  ]}
+  ],
+  {label:"6月19日", matches:[
+    {group:"D",home:"美国",away:"澳大利亚",hs:2,as:0,status:"played"}
+    {group:"C",home:"苏格兰",away:"摩洛哥",hs:0,as:1,status:"played"}
+    {group:"D",home:"土耳其",away:"巴拉圭",hs:0,as:1,status:"played"}
+    {group:"C",home:"巴西",away:"海地",hs:3,as:0,status:"played"}
+  ]}
+  ],
+  {label:"6月20日", matches:[
+    {group:"F",home:"荷兰",away:"瑞典",hs:5,as:1,status:"played"}
+    {group:"E",home:"德国",away:"科特迪瓦",hs:2,as:1,status:"played"}
+    {group:"E",home:"厄瓜多尔",away:"库拉索",hs:0,as:0,status:"played"}
+    {group:"F",home:"突尼斯",away:"日本",hs:0,as:4,status:"played"}
+  ]}
+  ],
+  {label:"6月21日", matches:[
+    {group:"H",home:"西班牙",away:"沙特阿拉伯",hs:4,as:0,status:"played"}
+    {group:"G",home:"比利时",away:"伊朗",hs:0,as:0,status:"played"}
+    {group:"G",home:"新西兰",away:"埃及",hs:1,as:3,status:"played"}
+    {group:"H",home:"乌拉圭",away:"佛得角",hs:2,as:2,status:"played"}
+  ]}
+  ],
+  {label:"6月22日", matches:[
+    {group:"J",home:"阿根廷",away:"奥地利",hs:2,as:0,status:"played"}
+    {group:"I",home:"法国",away:"伊拉克",hs:3,as:0,status:"played"}
+    {group:"I",home:"挪威",away:"塞内加尔",hs:3,as:2,status:"played"}
+    {group:"J",home:"约旦",away:"阿尔及利亚",hs:1,as:2,status:"played"}
+  ]}
+  ],
+  {label:"6月23日", matches:[
+    {group:"K",home:"葡萄牙",away:"乌兹别克斯坦",hs:5,as:0,status:"played"}
+    {group:"L",home:"England",away:"加纳",hs:0,as:0,status:"played"}
+    {group:"L",home:"巴拿马",away:"克罗地亚",hs:0,as:1,status:"played"}
+    {group:"K",home:"哥伦比亚",away:"刚果民主共和国",hs:1,as:0,status:"played"}
+  ]}
+  ],
+  {label:"6月24日", matches:[
+    {group:"B",home:"波黑",away:"卡塔尔",hs:3,as:1,status:"played"}
+    {group:"B",home:"瑞士",away:"加拿大",hs:2,as:1,status:"played"}
+    {group:"C",home:"摩洛哥",away:"海地",hs:4,as:2,status:"played"}
+    {group:"C",home:"苏格兰",away:"巴西",hs:0,as:3,status:"played"}
+    {group:"A",home:"捷克",away:"墨西哥",hs:0,as:3,status:"played"}
+    {group:"A",home:"南非",away:"韩国",hs:1,as:0,status:"played"}
+  ]}
+  ],
+  {label:"6月25日", matches:[
+    {group:"E",home:"库拉索",away:"科特迪瓦",hs:0,as:2,status:"played"}
+    {group:"E",home:"厄瓜多尔",away:"德国",hs:2,as:1,status:"played"}
+    {group:"F",home:"日本",away:"瑞典",hs:1,as:1,status:"played"}
+    {group:"F",home:"突尼斯",away:"荷兰",hs:1,as:3,status:"played"}
+    {group:"D",home:"土耳其",away:"美国",hs:3,as:2,status:"played"}
+    {group:"D",home:"巴拉圭",away:"澳大利亚",hs:0,as:0,status:"played"}
+  ]}
+  ],
+  {label:"6月26日", matches:[
+    {group:"I",home:"塞内加尔",away:"伊拉克",hs:5,as:0,status:"played"}
+    {group:"I",home:"挪威",away:"法国",hs:1,as:4,status:"played"}
+    {group:"H",home:"乌拉圭",away:"西班牙",hs:0,as:1,status:"played"}
+    {group:"H",home:"佛得角",away:"沙特阿拉伯",hs:0,as:0,status:"played"}
+    {group:"G",home:"埃及",away:"伊朗",hs:1,as:1,status:"played"}
+    {group:"G",home:"新西兰",away:"比利时",hs:1,as:5,status:"played"}
+  ]}
+  ],
   {label:"6月27日 · 收官日", matches:[
-    {group:"K",home:"葡萄牙",away:"哥伦比亚",hs:0,as:0,status:"played",venue:"波士顿 · 吉列球场"},
-    {group:"J",home:"阿根廷",away:"约旦",hs:3,as:1,status:"played",venue:"迈阿密 · 硬石球场"},
-    {group:"J",home:"阿尔及利亚",away:"奥地利",hs:3,as:3,status:"played",venue:"福克斯堡 · 吉列球场"},
-    {group:"K",home:"刚果民主共和国",away:"乌兹别克斯坦",hs:1,as:0,status:"played",venue:"蒙特雷 · 美洲银行球场",note:"末轮出线关键战"}
-  ]},
+    {group:"L",home:"巴拿马",away:"England",hs:0,as:2,status:"played"}
+    {group:"L",home:"克罗地亚",away:"加纳",hs:2,as:1,status:"played"}
+    {group:"K",home:"刚果民主共和国",away:"乌兹别克斯坦",hs:3,as:1,status:"played"}
+    {group:"K",home:"哥伦比亚",away:"葡萄牙",hs:0,as:0,status:"played"}
+    {group:"J",home:"约旦",away:"阿根廷",hs:1,as:3,status:"played"}
+    {group:"J",home:"阿尔及利亚",away:"奥地利",hs:3,as:3,status:"played"}
+  ]}
+  ],
+  {label:"6月28日 · 1/16决赛", matches:[
+    {group:"1/16",home:"南非",away:"加拿大",hs:0,as:1,status:"played",time:"12:00"}
+  ]}
+  ],
   {label:"6月29日 · 1/16决赛", matches:[
-    {group:"1/16",home:"南非",away:"加拿大",hs:0,as:1,status:"played",venue:"洛杉矶 · 索菲球场",note:"加拿大补时绝杀 队史首进16强",time:"03:00 北京时间"}
-  ]},
+    {group:"1/16",home:"巴西",away:"日本",hs:2,as:1,status:"played",time:"12:00"}
+    {group:"1/16",home:"德国",away:"巴拉圭",hs:1,as:1,status:"played",time:"16:30"}
+    {group:"1/16",home:"荷兰",away:"摩洛哥",hs:1,as:1,status:"played",time:"19:00"}
+  ]}
+  ],
   {label:"6月30日 · 1/16决赛", matches:[
-    {group:"1/16",home:"巴西",away:"日本",hs:2,as:1,status:"played",venue:"西雅图 · 流明球场",note:"巴西补时绝杀 2-1逆转晋级",time:"01:00 北京时间"},
-    {group:"1/16",home:"德国",away:"巴拉圭",hs:1,as:1,status:"played",venue:"达拉斯 · AT&T球场",note:"点球3-4出局 哈弗茨破门 巴拉圭晋级",time:"04:30 北京时间"},
-    {group:"1/16",home:"荷兰",away:"摩洛哥",hs:1,as:1,status:"played",venue:"蒙特雷 · 美洲银行球场",note:"点球3-4出局 摩洛哥首支非洲16强",time:"09:00 北京时间"}
-  ]},
+    {group:"1/16",home:"科特迪瓦",away:"挪威",hs:1,as:2,status:"played",time:"12:00"}
+    {group:"1/16",home:"法国",away:"瑞典",hs:3,as:0,status:"played",time:"17:00"}
+    {group:"1/16",home:"墨西哥",away:"厄瓜多尔",hs:null,as:null,status:"upcoming",time:"19:00"}
+  ]}
+  ],
   {label:"7月1日 · 1/16决赛", matches:[
-    {group:"1/16",home:"科特迪瓦",away:"挪威",hs:1,as:2,status:"played",time:"01:00",venue:"福克斯堡 · 吉列球场",note:"哈兰德破门 挪威逆转晋级"},
-    {group:"1/16",home:"法国",away:"瑞典",hs:3,as:0,status:"played",time:"05:00",venue:"迈阿密 · 硬石球场",note:"姆巴佩梅开二度 法国强势晋级"},
-    {group:"1/16",home:"墨西哥",away:"厄瓜多尔",hs:null,as:null,status:"upcoming",time:"09:00",venue:"亚特兰大 · 梅赛德斯-奔驰球场"}
-  ]},
+    {group:"1/16",home:"England",away:"刚果民主共和国",hs:null,as:null,status:"upcoming",time:"12:00"}
+    {group:"1/16",home:"比利时",away:"塞内加尔",hs:null,as:null,status:"upcoming",time:"13:00"}
+    {group:"1/16",home:"美国",away:"波黑",hs:null,as:null,status:"upcoming",time:"17:00"}
+  ]}
+  ],
   {label:"7月2日 · 1/16决赛", matches:[
-    {group:"1/16",home:"英格兰",away:"刚果民主共和国",hs:null,as:null,status:"upcoming",time:"00:00",venue:"费城 · 林肯金融球场"},
-    {group:"1/16",home:"比利时",away:"塞内加尔",hs:null,as:null,status:"upcoming",time:"04:00",venue:"休斯顿 · NRG球场"},
-    {group:"1/16",home:"美国",away:"波黑",hs:null,as:null,status:"upcoming",time:"08:00",venue:"堪萨斯城 · 箭头球场"}
-  ]},
+    {group:"1/16",home:"西班牙",away:"奥地利",hs:null,as:null,status:"upcoming",time:"12:00"}
+    {group:"1/16",home:"葡萄牙",away:"克罗地亚",hs:null,as:null,status:"upcoming",time:"19:00"}
+    {group:"1/16",home:"瑞士",away:"阿尔及利亚",hs:null,as:null,status:"upcoming",time:"20:00"}
+  ]}
+  ],
   {label:"7月3日 · 1/16决赛", matches:[
-    {group:"1/16",home:"西班牙",away:"奥地利",hs:null,as:null,status:"upcoming",time:"03:00",venue:"波士顿 · 吉列球场"},
-    {group:"1/16",home:"葡萄牙",away:"克罗地亚",hs:null,as:null,status:"upcoming",time:"07:00",venue:"西雅图 · 流明球场"},
-    {group:"1/16",home:"瑞士",away:"阿尔及利亚",hs:null,as:null,status:"upcoming",time:"11:00",venue:"英格尔伍德 · 索菲球场"}
-  ]},
-  {label:"7月4日 · 1/16决赛", matches:[
-    {group:"1/16",home:"澳大利亚",away:"埃及",hs:null,as:null,status:"upcoming",time:"02:00",venue:"多伦多 · BMO球场"},
-    {group:"1/16",home:"阿根廷",away:"佛得角",hs:null,as:null,status:"upcoming",time:"06:00",venue:"蒙特雷 · 美洲银行球场"},
-    {group:"1/16",home:"哥伦比亚",away:"加纳",hs:null,as:null,status:"upcoming",time:"09:30",venue:"达拉斯 · AT&T球场"}
-  ]},
+    {group:"1/16",home:"澳大利亚",away:"埃及",hs:null,as:null,status:"upcoming",time:"13:00"}
+    {group:"1/16",home:"阿根廷",away:"佛得角",hs:null,as:null,status:"upcoming",time:"18:00"}
+    {group:"1/16",home:"哥伦比亚",away:"加纳",hs:null,as:null,status:"upcoming",time:"20:30"}
+  ]}
+  ],
+  {label:"7月4日 · 1/8决赛", matches:[
+    {group:"1/8",home:"Winner Match 73",away:"Winner Match 75",hs:null,as:null,status:"upcoming",time:"12:00"}
+    {group:"1/8",home:"Winner Match 74",away:"Winner Match 77",hs:null,as:null,status:"upcoming",time:"17:00"}
+  ]}
+  ],
   {label:"7月5日 · 1/8决赛", matches:[
-    {group:"1/8",home:"加拿大",away:"摩洛哥",hs:null,as:null,status:"upcoming",time:"01:00",venue:"休斯顿 · NRG球场",note:"东道主 vs 非洲劲旅 胜者进8强"}
-  ]},
+    {group:"1/8",home:"Winner Match 76",away:"Winner Match 78",hs:null,as:null,status:"upcoming",time:"16:00"}
+    {group:"1/8",home:"Winner Match 79",away:"Winner Match 80",hs:null,as:null,status:"upcoming",time:"18:00"}
+  ]}
+  ],
+  {label:"7月6日 · 1/8决赛", matches:[
+    {group:"1/8",home:"Winner Match 83",away:"Winner Match 84",hs:null,as:null,status:"upcoming",time:"14:00"}
+    {group:"1/8",home:"Winner Match 81",away:"Winner Match 82",hs:null,as:null,status:"upcoming",time:"17:00"}
+  ]}
+  ],
+  {label:"7月7日 · 1/8决赛", matches:[
+    {group:"1/8",home:"Winner Match 86",away:"Winner Match 88",hs:null,as:null,status:"upcoming",time:"12:00"}
+    {group:"1/8",home:"Winner Match 85",away:"Winner Match 87",hs:null,as:null,status:"upcoming",time:"13:00"}
+  ]}
+  ],
+  {label:"7月9日 · 1/4决赛", matches:[
+    {group:"1/4",home:"Winner Match 89",away:"Winner Match 90",hs:null,as:null,status:"upcoming",time:"16:00"}
+  ]}
+  ],
+  {label:"7月10日 · 1/4决赛", matches:[
+    {group:"1/4",home:"Winner Match 93",away:"Winner Match 94",hs:null,as:null,status:"upcoming",time:"12:00"}
+  ]}
+  ],
+  {label:"7月11日 · 1/4决赛", matches:[
+    {group:"1/4",home:"Winner Match 91",away:"Winner Match 92",hs:null,as:null,status:"upcoming",time:"17:00"}
+    {group:"1/4",home:"Winner Match 95",away:"Winner Match 96",hs:null,as:null,status:"upcoming",time:"20:00"}
+  ]}
+  ],
+  {label:"7月14日 · 半决赛", matches:[
+    {group:"半决赛",home:"Winner Match 97",away:"Winner Match 98",hs:null,as:null,status:"upcoming",time:"14:00"}
+  ]}
+  ],
+  {label:"7月15日 · 半决赛", matches:[
+    {group:"半决赛",home:"Winner Match 99",away:"Winner Match 100",hs:null,as:null,status:"upcoming",time:"15:00"}
+  ]}
+  ],
   {label:"7月19日 · 决赛", matches:[
     {group:"决赛",home:"待定",away:"待定",hs:null,as:null,status:"final",time:"03:00",venue:"东拉瑟福德 · 大都会球场","final":true}
   ]}
+  ],
+];
 ];
 
 /* 球队聚焦（聚焦小组赛阶段表现和淘汰赛前景） */
