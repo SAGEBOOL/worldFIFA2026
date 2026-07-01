@@ -24,9 +24,9 @@
 ## 自动化任务
 - 名称：世界杯每日数据报告推送
 - ID：automation-1782700617890
-- 频率：每天 20:00（北京时间）
-- 输出：test-report-YYYY-MM-DD.md
-- 数据源：worldcup26.ir API
+- 频率：每天 4:00、7:00、12:00、16:00（北京时间）
+- 输出：test-report-YYYY-MM-DD.md + index.html 自动更新
+- 数据截至：2026年7月1日（R32 6场已完成）
 
 ## 用户偏好
 - 文件命名严格一致（如 `test-report-YYYY-MM-DD.md`）
